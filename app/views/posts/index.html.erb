@@ -2,14 +2,13 @@
 
   <div>
     <% @posts.each do |post| %>
-      
-      <p>ユーザー</p>:
-      <%= post.user.name %>
-      <p>タイトル</p>:
-      <%= post.title %>
-      <p>説明</p>:
-      <%= post.body %>
-      <%= render "favorites/favorite", post: post %>
+      <p>ユーザー:<%= post.user.name %></p>
+      <p>タイトル:<%= link_to post_path(post) do %>
+        <%= post.title %>
+        <% end %>
+      </p>
+      <p>説明:<%= post.body %></p>
+      <p><%= render "favorites/favorite", post: post %></p>
     <% end %>
   </div>
 
