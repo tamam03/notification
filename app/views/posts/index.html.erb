@@ -9,7 +9,7 @@
       <%= post.title %>
       <p>説明</p>:
       <%= post.body %>
-  
+      <%= render "favorites/favorite", post: post %>
     <% end %>
   </div>
 
