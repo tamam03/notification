@@ -10,6 +10,14 @@
     <% when 'favorite' then %>
       <%= link_to 'あなたの投稿', notice.post %>
       <%= "にいいねしました" %>
+    <% when 'comment' then %>
+      <% if notice.post.user_id == visited_id %>
+        <%= link_to "あなたの投稿", notice.post %>
+      <% else %>
+        <%= notice.post.user.name + 'さんの投稿' %>
+        <%= "にコメントしました" %>
+        <p><%= Comment.find_by(id: notice.comment_id)&.comment %></p>
+      <% end %>
   <% end %>
   
 </span>
