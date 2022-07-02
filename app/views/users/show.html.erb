@@ -3,7 +3,9 @@
 <p><%= @user.name %></p>
 
 <div>
-<% unless @user == current_user %>
+<% if @user == current_user %>
+  <%= link_to "通知", notices_path %>
+<% else %>
   <%= render "relationships/btn", user: @user %>
 <% end %>
 </div>

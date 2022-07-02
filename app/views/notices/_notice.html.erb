@@ -1,0 +1,18 @@
+<div>
+<% visitor = notice.visitor %>
+<% visited = notice.visited %>
+
+<span>
+  <%= visitor.name %>
+  <%= 'さんが' %>
+    
+  <% case notice.action %>
+    <% when 'favorite' then %>
+      <%= link_to 'あなたの投稿', notice.post %>
+      <%= "にいいねしました" %>
+  <% end %>
+  
+</span>
+
+</div>
+  
