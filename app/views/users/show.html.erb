@@ -1,0 +1,9 @@
+<h1>ユーザー詳細</h1>
+
+<p><%= @user.name %></p>
+
+<div>
+<% unless @user == current_user %>
+  <%= render "relationships/btn", user: @user %>
+<% end %>
+</div>

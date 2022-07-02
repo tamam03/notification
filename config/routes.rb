@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   
   root 'homes#top'
   
+  resources :users, only:[:index, :show] do
+    resource :relationships, only:[:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+  end
+  
   resources :posts, only:[:new, :create, :index, :show] do
   # get 'posts/index'
   # get 'posts/show'
