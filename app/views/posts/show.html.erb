@@ -1,5 +1,29 @@
+
 <h1>投稿詳細</h1>
+
 <div>
   <p>タイトル:<%= @post.title %></p>
   <p>説明:<%= @post.body %></p>
 </div>
+
+<div>
+  <h5>コメント</h5>
+  <%= form_with(model:[@post, @comment], method: :post) do |f| %>
+    <%= f.text_area :text %>
+    <%= f.hidden_field :post_id, value: @post.id %>
+    <%= f.submit 'コメント送信' %>
+  <% end %>
+</div>
+
+
+<% if @comments.exists? %>
+  <div>
+    <h5>コメント一覧</h5>
+    <% @comments.each do |comment| %>
+      <%= comment.user.name %>
+      <%= comment.text %>
+    <% end %>
+  </div>
+<% end %>
+
+
