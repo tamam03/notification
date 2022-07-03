@@ -5,14 +5,15 @@
 <span>
   <%= visitor.name %>
   <%= 'さんが' %>
-    
   <% case notice.action %>
     <% when 'favorite' then %>
       <%= link_to 'あなたの投稿', notice.post %>
       <%= "にいいねしました" %>
     <% when 'comment' then %>
-      <% if notice.post.user_id == visited_id %>
+      <% if notice.post.user_id == visited.id %>
         <%= link_to "あなたの投稿", notice.post %>
+        <%= "にコメントしました" %>
+        <p><%= Comment.find_by(id: notice.comment_id)&.text %></p>
       <% else %>
         <%= notice.post.user.name + 'さんの投稿' %>
         <%= "にコメントしました" %>
