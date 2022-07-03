@@ -28,4 +28,16 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  
+  def create_notice_follow(current_user)
+    temp = Notice.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, 'follow'])
+    if temp.blank?
+      notice = current_user.active_notices.new(
+        visited_id: id,
+        action: 'follow'
+        )
+      notice.save if notice.valid?
+    end
+  end
+  
 end

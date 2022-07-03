@@ -6,6 +6,8 @@
   <%= visitor.name %>
   <%= 'さんが' %>
   <% case notice.action %>
+    <% when 'follow' then %>
+      <%= "あなたをフォローしました" %>
     <% when 'favorite' then %>
       <%= link_to 'あなたの投稿', notice.post %>
       <%= "にいいねしました" %>
